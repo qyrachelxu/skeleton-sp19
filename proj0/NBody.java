@@ -9,9 +9,9 @@ public class NBody{
 
     public static Planet[] readPlanets(String name){
     	In in = new In(name);
-    	double first = in.readDouble();
+    	int first = in.readInt();
     	double second = in.readDouble();
-    	Planet[] bodys = new Planet[5];
+    	Planet[] bodys = new Planet[first];
     	for (int i = 0; i < 5; i++){
     		double xxp = in.readDouble();
     		double yyp = in.readDouble();
