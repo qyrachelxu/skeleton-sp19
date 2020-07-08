@@ -11,15 +11,21 @@ public class NBody{
     	In in = new In(name);
     	int first = in.readInt();
     	double second = in.readDouble();
+    	double xxp;
+    	double yyp;
+    	double xxv;
+    	double yyv;
+    	double mas;
+    	String imgf;
     	Planet[] bodys = new Planet[first];
-    	for (int i = 0; i < 5; i++){
-    		double xxp = in.readDouble();
-    		double yyp = in.readDouble();
-    		double xxv = in.readDouble();
-    		double yyv = in.readDouble();
-    		double mas = in.readDouble();
-    		String str = in.readString();
-    		bodys[i] = new Planet(xxp, yyp, xxv, yyv, mas, str);
+    	for (int i = 0; i < first; i++){
+    		xxp = in.readDouble();
+    		yyp = in.readDouble();
+    		xxv = in.readDouble();
+    		yyv = in.readDouble();
+    		mas = in.readDouble();
+    		imgf = in.readString();
+    		bodys[i] = new Planet(xxp, yyp, xxv, yyv, mas, imgf);
     	}
     	return bodys;
     }
