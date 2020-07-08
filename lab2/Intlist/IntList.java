@@ -85,9 +85,6 @@ public class IntList {
         if (A == null){
             return null;
         }
-        if (B == null){
-            return null;
-        }
         IntList res = A;
         while (A.rest != null){
             A = A.rest;
@@ -103,9 +100,6 @@ public class IntList {
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
         if (A == null){
-            return null;
-        }
-        if (B == null){
             return null;
         }
         IntList res = new IntList(A.first, A.rest);
