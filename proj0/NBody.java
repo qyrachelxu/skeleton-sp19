@@ -7,7 +7,7 @@ public class NBody{
 		return radiusuniver;
     }
 
-    public static Planet[] readBodies(String name){
+    public static Planet[] readPlanets(String name){
     	In in = new In(name);
     	double first = in.readDouble();
     	double second = in.readDouble();
@@ -28,8 +28,8 @@ public class NBody{
     	double T = Double.parseDouble(args[0]);
     	double dt = Double.parseDouble(args[1]);
     	String filename = args[2];
-    	NBody.readBodies(filename);
-    	Planet bodies[] = NBody.readBodies(filename);
+    	NBody.readPlanets(filename);
+    	Planet bodies[] = NBody.readPlanets(filename);
     	double univerradius = NBody.readRadius(filename);
     	StdDraw.enableDoubleBuffering();
     	StdDraw.setScale(-univerradius, univerradius);
