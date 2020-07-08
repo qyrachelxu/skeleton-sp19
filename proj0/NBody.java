@@ -41,7 +41,7 @@ public class NBody{
     	StdDraw.enableDoubleBuffering();
     	StdDraw.setScale(-univerradius, univerradius);
 
-    	for(double time = 0; time < T;  T = T + dt){
+    	for(double time = 0.0; time < T;  T = T + dt){
     		double xForces[] = new double[bodies.length];
     		double yForces[] = new double[bodies.length];
 
