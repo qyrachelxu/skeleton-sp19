@@ -12,6 +12,7 @@ public class ArrayDeque<T> {
         nextLast = 0;
     }
 
+    /*
     public ArrayDeque(ArrayDeque other){
         items = (T[]) new Object[8];
         size = 0;
@@ -22,15 +23,16 @@ public class ArrayDeque<T> {
             items[i] = (T)other.get(i);
         }
     }
+    */
 
-    public int minusOne(int index){
+    private int minusOne(int index){
         if (index - 1 < 0){
             return 7;
         }
         return index - 1;
     }
 
-    public int addOne(int index){
+    private int addOne(int index){
         if (index + 1 > 7){
             return 0;
         }
@@ -76,6 +78,7 @@ public class ArrayDeque<T> {
             T i = items[addOne(nextFirst)];
             items[addOne(nextFirst)] = null;
             nextFirst =  addOne(nextFirst);
+            size -= 1;
             return i;
         }
     }
@@ -88,17 +91,12 @@ public class ArrayDeque<T> {
             T i = items[minusOne(nextLast)];
             items[minusOne(nextLast)] = null;
             nextLast = minusOne(nextLast);
+            size -= 1;
             return i;
         }
     }
 
     public T get(int index){
-        if (items[index] == null){
-            return null;
-        }
-        else {
-            return items[index];
-        }
+        return items[index];
     }
-
 }
