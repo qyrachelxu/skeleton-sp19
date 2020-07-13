@@ -8,7 +8,7 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
-        nextLast = 0;
+        nextLast = 1;
         nextFirst = 0;
     }
 
@@ -33,13 +33,13 @@ public class ArrayDeque<T> {
 
     private int minusOne(int index) {
         if (index - 1 < 0){
-            return 7;
+            return items.length - 1;
         }
         return index - 1;
     }
 
     private int addOne(int index) {
-        if (index + 1 > 7) {
+        if (index + 1 > items.length - 1) {
             return 0;
         }
         return index + 1;
@@ -47,7 +47,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T i) {
         if (size == items.length){
-            resize(size + 1);
+            resize(size * 2);
         }
         items[nextLast] = i;
         size += 1;
@@ -56,7 +56,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T i) {
         if (size == items.length){
-            resize(size + 1);
+            resize(size * 2);
         }
         items[nextFirst] = i;
         size += 1;
@@ -81,32 +81,31 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (items[addOne(nextFirst)] == null) {
-            return null;
+        T i = items[addOne(nextFirst)];
+        items[addOne(nextFirst)] = null;
+        size -= 1;
+        if (4 * size < items.length) {
+            resize(4 * size);
         }
-        else {
-            T i = items[addOne(nextFirst)];
-            items[addOne(nextFirst)] = null;
-            nextFirst =  addOne(nextFirst);
-            size -= 1;
-            return i;
-        }
+        return i;
     }
 
     public T removeLast() {
-        if (items[minusOne(nextLast)] == null) {
-            return null;
+        T i = items[minusOne(nextLast)];
+        items[minusOne(nextLast)] = null;
+        nextLast = minusOne(nextLast);
+        size -= 1;
+        if (4 * size < items.length) {
+            resize(4 * size);
         }
-        else {
-            T i = items[minusOne(nextLast)];
-            items[minusOne(nextLast)] = null;
-            nextLast = minusOne(nextLast);
-            size -= 1;
-            return i;
-        }
+        return i;
     }
 
     public T get(int index){
-        return items[index];
+        int i = addOne(nextFirst);
+        for (int n = 0; n != index; n++){
+            i = addOne(nextFirst);
+        }
+        return items[i];
     }
 }
