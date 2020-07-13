@@ -12,6 +12,16 @@ public class LinkedListDeque<T> {
             next = n;
             prev = p;
         }
+
+        private T getRecursive(int index) {
+            TNode p = this;
+            if (index == 0){
+                return p.item;
+            }
+            else {
+                return p.next.getRecursive(index - 1);
+            }
+        }
     }
 
     private TNode sentinel;
@@ -39,7 +49,7 @@ public class LinkedListDeque<T> {
      */
 
     public void addFirst(T item) {
-        if (sentinel.next == sentinel) {
+        if (size == 0) {
             TNode p = new TNode(sentinel, item, sentinel);
             sentinel.next = p;
             sentinel.prev = p;
@@ -53,19 +63,21 @@ public class LinkedListDeque<T> {
     }
 
     public void addLast(T item) {
-        if (sentinel.prev == sentinel) {
+        if (size == 0) {
             TNode p = new TNode(sentinel, item, sentinel);
             sentinel.next = p;
             sentinel.prev = p;
         }
-        TNode p = new TNode(sentinel.prev, item, sentinel);
-        sentinel.prev.next = p;
-        sentinel.prev = p;
+        else {
+            TNode p = new TNode(sentinel.prev, item, sentinel);
+            sentinel.prev.next = p;
+            sentinel.prev = p;
+        }
         size += 1;
     }
 
     public boolean isEmpty() {
-        if (sentinel.next == sentinel) {
+        if (size == 0) {
             return true;
         }
         return false;
@@ -84,7 +96,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (sentinel.next == sentinel) {
+        if (size == 0) {
             return null;
         }
         TNode p = sentinel.next;
@@ -95,7 +107,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (sentinel.prev == sentinel){
+        if (size == 0){
             return null;
         }
         TNode p = sentinel.prev;
@@ -118,28 +130,11 @@ public class LinkedListDeque<T> {
         return null;
     }
 
-    private T getRecurHelp(int index) {
-        TNode p = sentinel.next;
-        int i = 0;
-        while (i != index) {
-            if (p == sentinel) {
-                return null;
-            }
-            p = p.next;
-            i += 1;
-        }
-        if (p == sentinel) {
+    public T getRecursive(int index) {
+        if (size() == 0 || index >= size()){
             return null;
         }
-        return p.item;
+        return sentinel.next.getRecursive(index);
     }
 
-    public T getRecursive(int index) {
-        TNode p = sentinel.next;
-        int i = 0;
-        if (i == index){
-            return getRecurHelp(i);
-        }
-        return getRecursive(i + 1);
-    }
 }

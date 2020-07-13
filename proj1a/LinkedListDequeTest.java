@@ -72,7 +72,17 @@ public class LinkedListDequeTest {
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
-		lld1.addFirst(10);
+		ArrayDeque<Integer> lld2 = new ArrayDeque<>();
+		lld2.addFirst(0);
+		lld2.addFirst(1);
+		lld2.removeLast();
+
+		lld1.addLast(0);
+		lld1.addFirst(1);
+		lld1.addFirst(2);
+		lld1.addLast(3);
+		lld1.addLast(4);
+		lld1.getRecursive(4);
 		// should not be empty 
 		passed = checkEmpty(false, lld1.isEmpty()) && passed;
 

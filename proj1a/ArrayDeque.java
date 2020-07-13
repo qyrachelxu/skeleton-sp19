@@ -8,8 +8,14 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
-        nextLast = 7;
+        nextLast = 0;
         nextFirst = 0;
+    }
+
+    private void resize(int capacity){
+        T[] a = (T[]) new Object[capacity];
+        System.arraycopy(items, 0, a, 0, size);
+        items = a;
     }
 
     /*
@@ -40,24 +46,28 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T i) {
+        if (size == items.length){
+            resize(size + 1);
+        }
         items[nextLast] = i;
         size += 1;
         nextLast = addOne(nextLast);
     }
 
     public void addFirst(T i) {
+        if (size == items.length){
+            resize(size + 1);
+        }
         items[nextFirst] = i;
         size += 1;
         nextFirst = minusOne(nextFirst);
     }
 
     public boolean isEmpty(){
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                return false;
-            }
+        if (size == 0){
+            return true;
         }
-        return true;
+        return false;
     }
 
     public int size(){
