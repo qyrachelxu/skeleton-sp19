@@ -16,16 +16,18 @@ public class ArrayDequeTest {
     @Test
     public void addfirsttest() {
         ArrayDeque<Integer> input = new ArrayDeque<>();
-        input.addLast(12);
-        input.addLast(145);
-        input.addLast(352);
-        input.addLast(333);
+        input.addLast(0);
+        input.addFirst(1);
+        input.addLast(2);
+        input.addFirst(3);
+        input.addFirst(4);
         input.removeFirst();
-        input.addFirst(134);
+        input.addFirst(6);
+        input.removeFirst();
+        input.removeFirst();
         input.removeLast();
-        input.addFirst(45);
         input.removeFirst();
-        input.addFirst(11);
+        input.addFirst(2);
 
         input.printDeque();
     }
