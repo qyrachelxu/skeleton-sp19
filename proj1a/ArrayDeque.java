@@ -95,6 +95,9 @@ public class ArrayDeque<T> {
             System.out.println("Empty");
             return null;
         }
+        if (nextFirst + 1 >= items.length){
+            nextFirst = -1;
+        }
         T i = items[nextFirst + 1];
         items[nextFirst + 1] = null;
         nextFirst += 1;
@@ -106,6 +109,9 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             System.out.println("Empty");
             return null;
+        }
+        if (nextLast - 1 < 0){
+            nextLast = items.length;
         }
         T i = items[nextLast - 1];
         items[nextLast - 1] = null;
