@@ -14,7 +14,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void addfirsttest(){
+    public void addfirsttest() {
         ArrayDeque<Integer> input = new ArrayDeque<>();
         input.addLast(12);
         input.addLast(145);

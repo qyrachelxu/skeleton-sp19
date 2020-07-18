@@ -1,4 +1,4 @@
-import java.awt.desktop.SystemSleepEvent;
+/*import java.awt.desktop.SystemSleepEvent;*/
 
 public class LinkedListDeque<T> {
 
@@ -17,8 +17,7 @@ public class LinkedListDeque<T> {
             TNode p = this;
             if (index == 0) {
                 return p.item;
-            }
-            else {
+            } else {
                 return p.next.getRecursive(index - 1);
             }
         }
@@ -53,8 +52,7 @@ public class LinkedListDeque<T> {
             TNode p = new TNode(sentinel, item, sentinel);
             sentinel.next = p;
             sentinel.prev = p;
-        }
-        else {
+        } else {
             TNode p = new TNode(sentinel, item, sentinel.next);
             sentinel.next.prev = p;
             sentinel.next = p;
@@ -67,8 +65,7 @@ public class LinkedListDeque<T> {
             TNode p = new TNode(sentinel, item, sentinel);
             sentinel.next = p;
             sentinel.prev = p;
-        }
-        else {
+        } else {
             TNode p = new TNode(sentinel.prev, item, sentinel);
             sentinel.prev.next = p;
             sentinel.prev = p;
@@ -83,7 +80,7 @@ public class LinkedListDeque<T> {
         return false;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 

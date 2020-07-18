@@ -16,7 +16,9 @@ public class ArrayDeque<T> {
         T[] a = (T[]) new Object[items.length * 2];
         System.arraycopy(items, 0, a, 0, nextFirst + 1);
         if ((nextFirst + 1) != items.length) {
-            System.arraycopy(items, nextFirst + 1, a, items.length + nextFirst + 1, items.length - nextFirst - 1);
+            int a1 = items.length + nextFirst + 1;
+            int a2 = items.length - nextFirst - 1;
+            System.arraycopy(items, nextFirst + 1, a, a1, a2);
         }
         items = a;
         nextFirst = nextFirst + a.length / 2;
@@ -95,7 +97,7 @@ public class ArrayDeque<T> {
             System.out.println("Empty");
             return null;
         }
-        if (nextFirst + 1 >= items.length){
+        if (nextFirst + 1 >= items.length) {
             nextFirst = -1;
         }
         T i = items[nextFirst + 1];
@@ -110,7 +112,7 @@ public class ArrayDeque<T> {
             System.out.println("Empty");
             return null;
         }
-        if (nextLast - 1 < 0){
+        if (nextLast - 1 < 0) {
             nextLast = items.length;
         }
         T i = items[nextLast - 1];
@@ -121,6 +123,6 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        return items[index];
+        return items[nextFirst + 1 + index];
     }
 }
