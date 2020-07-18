@@ -3,9 +3,9 @@ import java.awt.desktop.SystemSleepEvent;
 public class LinkedListDeque<T> {
 
     private class TNode {
-        public T item;
-        public TNode next;
-        public TNode prev;
+        private T item;
+        private TNode next;
+        private TNode prev;
 
         public TNode(TNode p, T i, TNode n) {
             item = i;
@@ -15,7 +15,7 @@ public class LinkedListDeque<T> {
 
         private T getRecursive(int index) {
             TNode p = this;
-            if (index == 0){
+            if (index == 0) {
                 return p.item;
             }
             else {
@@ -107,7 +107,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (size == 0){
+        if (size == 0) {
             return null;
         }
         TNode p = sentinel.prev;
@@ -121,7 +121,7 @@ public class LinkedListDeque<T> {
         TNode p = sentinel.next;
         int i = 0;
         while (p != sentinel) {
-            if (i == index){
+            if (i == index) {
                 return p.item;
             }
             p = p.next;
@@ -131,7 +131,7 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if (size() == 0 || index >= size()){
+        if (size() == 0 || index >= size()) {
             return null;
         }
         return sentinel.next.getRecursive(index);
