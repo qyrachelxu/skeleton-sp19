@@ -28,7 +28,7 @@ public class Palindrome {
             if (!cc.equalChars(word.charAt(i), word.charAt(j))) {
                 return false;
             }
-            j++;
+            j--;
         }
         return true;
     }

@@ -3,7 +3,7 @@ public class OffByN implements CharacterComparator {
     int i;
 
     public void OffByN(int n) {
-        i = n;
+        this.i = n;
     }
 
     @Override
